@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cryptoForge/static/css/main.7b030860.css",
+    "main.js": "/cryptoForge/static/js/main.5af41055.js",
+    "static/js/453.2c028fab.chunk.js": "/cryptoForge/static/js/453.2c028fab.chunk.js",
+    "index.html": "/cryptoForge/index.html",
+    "main.7b030860.css.map": "/cryptoForge/static/css/main.7b030860.css.map",
+    "main.5af41055.js.map": "/cryptoForge/static/js/main.5af41055.js.map",
+    "453.2c028fab.chunk.js.map": "/cryptoForge/static/js/453.2c028fab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b030860.css",
+    "static/js/main.5af41055.js"
+  ]
+}
