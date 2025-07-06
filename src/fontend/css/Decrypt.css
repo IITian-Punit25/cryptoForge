@@ -1,0 +1,109 @@
+.decryptforge-wrapper {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: all 0.3s ease;
+}
+
+.decryptforge-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.decryptforge-input-group {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.decryptforge-input {
+    flex-grow: 1;
+    padding: 18px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--font-color);
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.decryptforge-input:focus {
+    border-color: var(--primary);
+}
+
+.paste-btn {
+    min-width: 100px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.paste-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.decryptforge-btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.decryptforge-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: var(--primary);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.decryptforge-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.decryptforge-btn.secondary {
+    background-color: var(--accent);
+    color: #000;
+}
+
+.decryptforge-btn.secondary:hover {
+    background-color: var(--accent-hover);
+}
+
+.decryptforge-output {
+    font-size: 1.1rem;
+    text-align: center;
+    word-break: break-word;
+    background-color: rgba(255, 255, 255, 0.04);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    min-height: 40px;
+}

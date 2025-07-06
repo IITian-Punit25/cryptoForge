@@ -1,0 +1,115 @@
+:root {
+    --bg-dark: #0f1117;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(12px);
+    --primary: #6c63ff;
+    --primary-hover: #5a52d4;
+    --font-color: #e3e3e3;
+    --accent: #00e7c4;
+    --accent-hover: #00cba9;
+    --radius: 16px;
+    --shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: var(--font-color);
+    margin: 0;
+    padding: 0;
+}
+
+.cryptforge-wrapper {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: all 0.3s ease;
+}
+
+.cryptforge-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.cryptforge-textarea,
+.cryptforge-input {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--font-color);
+    outline: none;
+    transition: border 0.3s ease;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.cryptforge-input {
+    resize: none;
+}
+
+.cryptforge-textarea:focus,
+.cryptforge-input:focus {
+    border-color: var(--accent);
+}
+
+.cryptforge-btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.cryptforge-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: var(--primary);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.cryptforge-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.cryptforge-btn.secondary {
+    background-color: var(--accent);
+    color: #000;
+}
+
+.cryptforge-btn.secondary:hover {
+    background-color: var(--accent-hover);
+}
+
+.cryptforge-output {
+    font-size: 1.1rem;
+    text-align: center;
+    word-break: break-word;
+    background-color: rgba(255, 255, 255, 0.04);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    min-height: 40px;
+}
