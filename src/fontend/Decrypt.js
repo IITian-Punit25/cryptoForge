@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './css/Decrypt.css';
 
 export default function Decrypt() {
-    const [encryptedCode, setEncryptedCode] = useState('')
-    const [decryptedCode, setDecryptedCode] = useState('')
+    const [encryptedCode, setEncryptedCode] = useState('');
+    const [decryptedCode, setDecryptedCode] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const decryptionTable = {
         76: '-', 85: '&', 89: '.', 91: '"', 92: "'", 93: '+',
@@ -25,86 +26,120 @@ export default function Decrypt() {
     };
 
     const decrypt = () => {
-        try{
-            if(encryptedCode.trim().length === 0){
-                return alert("Enter message to decrypt")
+        try {
+            setIsLoading(true);
+            if (encryptedCode.trim().length === 0) {
+                alert("Enter message to decrypt");
+                return;
             }
 
-            let codes = (encryptedCode.trim()).split('--');
-            let decryptedCode = '';
-            for(let x in codes){
+            let codes = encryptedCode.trim().split('--');
+            let decryptedResult = '';
+            for (let x in codes) {
                 let subCodes = codes[x].split(' ');
                 let subDecryptedCode = '';
-                for(let y in subCodes){
-                    if(decryptionTable[subCodes[y]] === undefined){
-                        return alert("Invalid code")
+                for (let y in subCodes) {
+                    if (decryptionTable[subCodes[y]] === undefined) {
+                        alert("Invalid code");
+                        return;
                     }
                     subDecryptedCode += decryptionTable[subCodes[y]];
                 }
-                decryptedCode += subDecryptedCode;
-                if(x === (codes.length-1).toString()){
+                decryptedResult += subDecryptedCode;
+                if (x === (codes.length - 1).toString()) {
                     break;
                 }
-                decryptedCode += ' '
+                decryptedResult += ' ';
             }
-            setDecryptedCode(decryptedCode)
-        }catch(err){
-            alert("Invalid code")
+            setDecryptedCode(decryptedResult);
+        } catch (err) {
+            alert("Invalid code");
+        } finally {
+            setIsLoading(false);
         }
-    }
+    };
 
     const handlePaste = async () => {
-        try{
-            let data = await navigator.clipboard.readText()
-            setEncryptedCode(data)
-        }catch (err){
-            alert("Failed to read clipboard")
+        try {
+            const data = await navigator.clipboard.readText();
+            setEncryptedCode(data);
+        } catch (err) {
+            alert("Failed to read clipboard");
         }
-    }
+    };
 
     const copyToClipboard = async () => {
-        try{
-            await navigator.clipboard.writeText(decryptedCode)
-            alert("Message copied to clipboard")
-        }catch(err){
-            alert("Failed to copy message to clipboard")
+        try {
+            await navigator.clipboard.writeText(decryptedCode);
+            alert("Message copied to clipboard");
+        } catch (err) {
+            alert("Failed to copy message to clipboard");
         }
-    }
+    };
 
     return (
-        <div className="decryptforge-wrapper">
-            <h1 className="decryptforge-title">🔓 Decryption Panel</h1>
-
-            <div className="decryptforge-input-group">
-                <input
-                    type="text"
-                    placeholder="Enter the encrypted code..."
-                    onChange={(e) => setEncryptedCode(e.target.value)}
-                    value={encryptedCode}
-                    className="decryptforge-input"
-                />
-                <button className="decryptforge-btn paste-btn" onClick={handlePaste}>
-                    Paste 📋
-                </button>
+        <div className="decrypt-container">
+            <div className="decrypt-header">
+                <h1 className="decrypt-title">
+                    <span className="decrypt-icon">🔓</span> Decrypt Message
+                </h1>
+                <p className="decrypt-subtitle">Enter your encrypted code to reveal the hidden message</p>
             </div>
 
-            <div className="decryptforge-btn-group">
-                <button className="decryptforge-btn" onClick={decrypt}>
-                    Decrypt 🧩
+            <div className="decrypt-input-container">
+                <div className="input-group">
+                    <textarea
+                        placeholder="Paste encrypted code here..."
+                        onChange={(e) => setEncryptedCode(e.target.value)}
+                        value={encryptedCode}
+                        className="decrypt-textarea"
+                        rows="4"
+                    />
+                    <button
+                        className="paste-button"
+                        onClick={handlePaste}
+                        title="Paste from clipboard"
+                    >
+                        <span className="button-icon">📋</span> Paste
+                    </button>
+                </div>
+            </div>
+
+            <div className="decrypt-actions">
+                <button
+                    className="decrypt-button primary"
+                    onClick={decrypt}
+                    disabled={isLoading}
+                >
+                    {isLoading ? (
+                        <span className="loading-spinner"></span>
+                    ) : (
+                        <>
+                            <span className="button-icon">🔍</span> Decrypt
+                        </>
+                    )}
                 </button>
 
                 {decryptedCode.length > 0 && (
-                    <button className="decryptforge-btn secondary" onClick={copyToClipboard}>
-                        Copy 📋
+                    <button
+                        className="decrypt-button secondary"
+                        onClick={copyToClipboard}
+                    >
+                        <span className="button-icon">📋</span> Copy Result
                     </button>
                 )}
             </div>
 
-            <h2 className="decryptforge-output">
-                {decryptedCode.length === 0
-                    ? "Enter message to decrypt"
-                    : `🔓 ${decryptedCode}`}
-            </h2>
+            <div className="decrypt-result-container">
+                <h3 className="result-title">Decrypted Message:</h3>
+                <div className="result-box">
+                    {decryptedCode.length === 0 ? (
+                        <p className="placeholder-text">Your decrypted message will appear here</p>
+                    ) : (
+                        <p className="decrypted-text">{decryptedCode}</p>
+                    )}
+                </div>
+            </div>
         </div>
-    )
+    );
 }

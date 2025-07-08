@@ -8,7 +8,8 @@ export default function Navbar() {
             <h2 className="logo">CryptoForge</h2>
             <ul className="nav-links">
                 <li><Link to="/">Encrypt</Link></li>
-                <li><Link to="decrypt">Decrypt</Link></li>
+                <li><Link to="/decrypt">Decrypt</Link></li>
+                <li><Link to="/about">About</Link></li>
             </ul>
         </nav>
     );

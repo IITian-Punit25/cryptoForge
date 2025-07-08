@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './css/Encrypt.css';
 
 export default function Encrypt() {
-    const [messageToEncrypt, setMessageToEncrypt] = useState('')
-    const [encryptedMessage, setEncryptedMessage] = useState('')
+    const [messageToEncrypt, setMessageToEncrypt] = useState('');
+    const [encryptedMessage, setEncryptedMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const encryptionTable = {
+        // formula = (ASCII of character) x 3 - 19
         // Uppercase A–Z
         'A': 176, 'B': 179, 'C': 182, 'D': 185, 'E': 188, 'F': 191,
         'G': 194, 'H': 197, 'I': 200, 'J': 203, 'K': 206, 'L': 209,
@@ -36,6 +38,7 @@ export default function Encrypt() {
 
     const encrypt = () => {
         try {
+            setIsLoading(true);
             let words = messageToEncrypt.split(' ');
             words = words.filter(word => word.length > 0);
             let encryptString = '';
@@ -58,50 +61,87 @@ export default function Encrypt() {
             setEncryptedMessage(encryptString.trim())
         } catch (err) {
             alert("Invalid message")
+        } finally {
+            setIsLoading(false);
         }
     }
 
     const copyToClipboard = async () => {
         try {
             await navigator.clipboard.writeText(encryptedMessage)
-            alert("Message copied to clipboard")
+            alert("Encrypted message copied to clipboard")
         } catch (err) {
             alert("Failed to copy message to clipboard")
         }
     }
 
+    const clearAll = () => {
+        setMessageToEncrypt('');
+        setEncryptedMessage('');
+    }
+
     return (
-        <div className="cryptforge-wrapper">
-            <h1 className="cryptforge-title">🔐 CryptForge</h1>
+        <div className="encrypt-container">
+            <div className="encrypt-header">
+                <h1 className="encrypt-title">
+                    <span className="encrypt-icon">🔐</span> Encrypt Message
+                </h1>
+                <p className="encrypt-subtitle">Transform your message into secure code</p>
+            </div>
 
-            <textarea
-                value={messageToEncrypt}
-                onChange={(e) => setMessageToEncrypt(e.target.value)}
-                rows={6}
-                placeholder="Type a secret message (without the extra spaces)..."
-                className="cryptforge-textarea"
-            />
+            <div className="input-section">
+                <textarea
+                    value={messageToEncrypt}
+                    onChange={(e) => setMessageToEncrypt(e.target.value)}
+                    rows={6}
+                    placeholder="Type your secret message here..."
+                    className="message-textarea"
+                />
+            </div>
 
-            <div className="cryptforge-btn-group">
-                <button className="cryptforge-btn" onClick={encrypt}>
-                    Encrypt ✨
+            <div className="action-buttons">
+                <button
+                    className="encrypt-button primary"
+                    onClick={encrypt}
+                    disabled={isLoading || messageToEncrypt.trim().length === 0}
+                >
+                    {isLoading ? (
+                        <span className="loading-spinner"></span>
+                    ) : (
+                        <>
+                            <span className="button-icon">✨</span> Encrypt
+                        </>
+                    )}
                 </button>
 
                 {encryptedMessage.length > 0 && (
-                    <button className="cryptforge-btn secondary" onClick={copyToClipboard}>
-                        Copy 📋
-                    </button>
+                    <>
+                        <button
+                            className="encrypt-button secondary"
+                            onClick={copyToClipboard}
+                        >
+                            <span className="button-icon">📋</span> Copy Code
+                        </button>
+                        <button
+                            className="encrypt-button clear-button"
+                            onClick={clearAll}
+                        >
+                            <span className="button-icon">🗑️</span> Clear
+                        </button>
+                    </>
                 )}
             </div>
 
-            <h2 className="cryptforge-output">
-                {encryptedMessage.length === 0
-                    ? "Waiting for message..."
-                    : `🔒 ${encryptedMessage}`}
-            </h2>
+            <div className="result-section">
+                <h3 className="result-title">Encrypted Result:</h3>
+                <div className="result-box">
+                    {encryptedMessage.length === 0 ? (
+                        <p className="placeholder-text">Your encrypted code will appear here</p>
+                    ) : (
+                        <p className="encrypted-code">{encryptedMessage}</p>
+                    )}
+                </div>
+            </div>
         </div>
-
-
-    )
+    );
 }
-

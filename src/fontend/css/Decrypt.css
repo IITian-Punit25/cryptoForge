@@ -1,109 +1,200 @@
-.decryptforge-wrapper {
-    max-width: 700px;
-    margin: 80px auto;
-    padding: 40px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    transition: all 0.3s ease;
-}
-
-.decryptforge-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.decryptforge-input-group {
-    display: flex;
-    gap: 12px;
-    width: 100%;
-}
-
-.decryptforge-input {
-    flex-grow: 1;
-    padding: 18px;
-    font-size: 1.1rem;
+.decrypt-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    background-color: #121212;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    color: var(--font-color);
-    outline: none;
-    transition: border 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.decryptforge-input:focus {
-    border-color: var(--primary);
+.decrypt-header {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.paste-btn {
-    min-width: 100px;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 500;
-    background-color: var(--primary);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.paste-btn:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
-}
-
-.decryptforge-btn-group {
+.decrypt-title {
+    font-size: 2rem;
+    color: #6e8efb;
+    margin-bottom: 0.5rem;
     display: flex;
-    gap: 16px;
+    align-items: center;
     justify-content: center;
-    margin: 20px 0;
-    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.decryptforge-btn {
-    padding: 12px 24px;
+.decrypt-icon {
+    font-size: 1.8rem;
+}
+
+.decrypt-subtitle {
+    color: #b0b0b0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.decrypt-input-container {
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.decrypt-textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.3s;
+}
+
+.decrypt-textarea:focus {
+    outline: none;
+    border-color: #6e8efb;
+}
+
+.paste-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 0.5rem 1rem;
+    background-color: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.paste-button:hover {
+    background-color: #4a5568;
+}
+
+.decrypt-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.decrypt-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
-    border-radius: 10px;
-    border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.decrypt-button.primary {
+    background-color: #6e8efb;
     color: white;
-    background-color: var(--primary);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    min-width: 120px;
-    text-align: center;
 }
 
-.decryptforge-btn:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
+.decrypt-button.primary:hover {
+    background-color: #5a7ae0;
+    transform: translateY(-2px);
 }
 
-.decryptforge-btn.secondary {
-    background-color: var(--accent);
-    color: #000;
+.decrypt-button.secondary {
+    background-color: #4a5568;
+    color: white;
 }
 
-.decryptforge-btn.secondary:hover {
-    background-color: var(--accent-hover);
+.decrypt-button.secondary:hover {
+    background-color: #2d3748;
+    transform: translateY(-2px);
 }
 
-.decryptforge-output {
-    font-size: 1.1rem;
-    text-align: center;
+.decrypt-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.decrypt-result-container {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #333;
+}
+
+.result-title {
+    color: #6e8efb;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.result-box {
+    min-height: 100px;
+    padding: 1rem;
+    background-color: #252525;
+    border-radius: 6px;
     word-break: break-word;
-    background-color: rgba(255, 255, 255, 0.04);
-    padding: 16px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    min-height: 40px;
+}
+
+.placeholder-text {
+    color: #6b7280;
+    font-style: italic;
+    margin: 0;
+}
+
+.decrypted-text {
+    color: #e0e0e0;
+    margin: 0;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.button-icon {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .decrypt-container {
+        padding: 1.5rem;
+    }
+
+    .decrypt-title {
+        font-size: 1.6rem;
+    }
+
+    .decrypt-actions {
+        flex-direction: column;
+    }
+
+    .decrypt-button {
+        width: 100%;
+        justify-content: center;
+    }
 }

@@ -1,0 +1,199 @@
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #3a3a3a, #1a1a1a);
+    border-radius: 12px;
+    color: #ffffff;
+    border: 1px solid #333;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #6e8efb;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: #a777e3;
+}
+
+.highlight {
+    color: #6e8efb;
+    font-weight: 500;
+}
+
+.intro-section {
+    margin: 2rem 0;
+    text-align: center;
+    padding: 1rem;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-card {
+    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    background: #252525;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #a777e3;
+}
+
+.feature-card h2 {
+    color: #6e8efb;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #b0b0b0;
+    line-height: 1.6;
+}
+
+.card-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+}
+
+.encrypt-card .card-highlight {
+    background: linear-gradient(to bottom, #4facfe, #00f2fe);
+}
+
+.decrypt-card .card-highlight {
+    background: linear-gradient(to bottom, #f093fb, #f5576c);
+}
+
+.code-card .card-highlight {
+    background: linear-gradient(to bottom, #43e97b, #38f9d7);
+}
+
+.mission-section {
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.mission-section h3 {
+    color: #6e8efb;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.mission-section p {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+    text-align: center;
+}
+
+.goals-list {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #b0b0b0;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+}
+
+.goals-list li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.author-section {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.author-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    border: 1px solid #333;
+    max-width: 400px;
+}
+
+.author-icon {
+    font-size: 2.5rem;
+}
+
+.author-info {
+    text-align: left;
+}
+
+.author-info h4 {
+    color: #6e8efb;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.author-name {
+    color: #e0e0e0;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.author-affiliation {
+    color: #a777e3;
+    font-size: 0.9rem;
+}

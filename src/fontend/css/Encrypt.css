@@ -1,115 +1,188 @@
-:root {
-    --bg-dark: #0f1117;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.1);
-    --glass-blur: blur(12px);
-    --primary: #6c63ff;
-    --primary-hover: #5a52d4;
-    --font-color: #e3e3e3;
-    --accent: #00e7c4;
-    --accent-hover: #00cba9;
-    --radius: 16px;
-    --shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-}
-
-body {
-    background-color: var(--bg-dark);
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    color: var(--font-color);
-    margin: 0;
-    padding: 0;
-}
-
-.cryptforge-wrapper {
-    max-width: 700px;
-    margin: 80px auto;
-    padding: 40px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    transition: all 0.3s ease;
-}
-
-.cryptforge-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--primary);
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.cryptforge-textarea,
-.cryptforge-input {
-    width: 100%;
-    padding: 18px;
-    font-size: 1.1rem;
+.encrypt-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    background-color: #121212;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    color: var(--font-color);
-    outline: none;
-    transition: border 0.3s ease;
-    resize: vertical;
-    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.cryptforge-input {
-    resize: none;
+.encrypt-header {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.cryptforge-textarea:focus,
-.cryptforge-input:focus {
-    border-color: var(--accent);
-}
-
-.cryptforge-btn-group {
+.encrypt-title {
+    font-size: 2rem;
+    color: #6e8efb;
+    margin-bottom: 0.5rem;
     display: flex;
-    gap: 16px;
+    align-items: center;
     justify-content: center;
-    margin: 20px 0;
+    gap: 0.5rem;
+}
+
+.encrypt-icon {
+    font-size: 1.8rem;
+}
+
+.encrypt-subtitle {
+    color: #b0b0b0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.input-section {
+    margin-bottom: 1.5rem;
+}
+
+.message-textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 150px;
+    transition: border-color 0.3s;
+}
+
+.message-textarea:focus {
+    outline: none;
+    border-color: #6e8efb;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
-.cryptforge-btn {
-    padding: 12px 24px;
+.encrypt-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
-    border-radius: 10px;
-    border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.encrypt-button.primary {
+    background-color: #6e8efb;
     color: white;
-    background-color: var(--primary);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    min-width: 120px;
-    text-align: center;
 }
 
-.cryptforge-btn:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
+.encrypt-button.primary:hover:not(:disabled) {
+    background-color: #6e8efb;
+    transform: translateY(-2px);
 }
 
-.cryptforge-btn.secondary {
-    background-color: var(--accent);
-    color: #000;
+.encrypt-button.secondary {
+    background-color: #4a5568;
+    color: white;
 }
 
-.cryptforge-btn.secondary:hover {
-    background-color: var(--accent-hover);
+.encrypt-button.secondary:hover {
+    background-color: #2d3748;
+    transform: translateY(-2px);
 }
 
-.cryptforge-output {
-    font-size: 1.1rem;
-    text-align: center;
+.encrypt-button.clear-button {
+    background-color: #6e8efb;
+    color: white;
+}
+
+.encrypt-button.clear-button:hover {
+    background-color:#6e8efb;
+    transform: translateY(-2px);
+}
+
+.encrypt-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.result-section {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #333;
+}
+
+.result-title {
+    color: #6e8efb;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.result-box {
+    min-height: 100px;
+    padding: 1rem;
+    background-color: #252525;
+    border-radius: 6px;
     word-break: break-word;
-    background-color: rgba(255, 255, 255, 0.04);
-    padding: 16px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    min-height: 40px;
+    overflow-x: auto;
+}
+
+.placeholder-text {
+    color: #6b7280;
+    font-style: italic;
+    margin: 0;
+}
+
+.encrypted-code {
+    color: #14f500;
+    margin: 0;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.button-icon {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .encrypt-container {
+        padding: 1.5rem;
+    }
+
+    .encrypt-title {
+        font-size: 1.6rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .encrypt-button {
+        width: 100%;
+        justify-content: center;
+    }
 }
